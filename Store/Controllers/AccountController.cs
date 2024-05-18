@@ -1,4 +1,5 @@
 ﻿using API.DTOs;
+using API.Errors;
 using API.Extentions;
 using AutoMapper;
 using Core.Entities.Identity;
@@ -27,7 +28,7 @@ namespace API.Controllers
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
-        {
+        {  
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if (user == null) return Unauthorized();
 
@@ -46,6 +47,14 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
+
+            if ( CheckEmailExistsAsync(registerDto.Email).Result.Value)
+            {
+                return BadRequest(new ApiValidationErrorResponse
+                {
+                    Errors = new[] { "Email address is in use" }
+                });
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

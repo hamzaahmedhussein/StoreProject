@@ -1,9 +1,9 @@
 ﻿
 namespace API.Errors
 {
-    public class ApiRespose
+    public class ApiResponse
     {
-        public ApiRespose(int statusCode,string message = null)
+        public ApiResponse(int statusCode,string message = null)
         {
             StatusCode = statusCode;
             Message = message ?? GetDefaultMessageForStatusCode(statusCode);
