@@ -7,12 +7,12 @@ namespace Application.Services
     {
         Task<IdentityResult> RegisterCustomerAsync(CustomerRegistrationDto customerDto);
         Task<IdentityResult> RegisterSellerAsync(SellerRegistrationDto sellerDto);
-        Task<bool> ConfirmEmailAsync(string email, string otp);
         Task<LoginResult> Login(LoginDto userDto);
         Task<IdentityResult> ChangePassword(ChangePasswordDto changePasswordDto);
         Task<bool> ResetPasswordAsync(ResetPasswordDto model);
         Task<bool> ForgotPasswordAsync(string email);
-
+        Task<IdentityResult> SendOTPAsync(string email);
+        Task<IdentityResult> ConfirmEmailWithOTP(VerifyOtpDto verifyOTPRequest);
 
 
     }

@@ -1,6 +1,7 @@
 ﻿using Application.Errors;
 using Application.Services;
 using Application.Services.Infrastructure.Services;
+using Application.Settings;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Services;
@@ -26,8 +27,8 @@ namespace Application.Extensions
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IOtpService, OtpService>();
-            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IMailingService, MailingService>();
+            services.Configure<Settings.MailSettings>(config.GetSection("Mailing"));
 
 
             services.Configure<ApiBehaviorOptions>(options =>

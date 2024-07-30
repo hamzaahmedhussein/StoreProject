@@ -15,9 +15,8 @@ namespace API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
-        private readonly IOtpService _otpService;
 
-        public AccountController(IAccountService accountService, ILogger<AccountController> logger, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IOtpService otpService)
+        public AccountController(IAccountService accountService, ILogger<AccountController> logger, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
         {
             _accountService = accountService;
             _logger = logger;
@@ -25,7 +24,6 @@ namespace API.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
-            _otpService = otpService;
         }
 
         [HttpPost]
@@ -71,13 +69,13 @@ namespace API.Controllers
         [Route("confirm-email")]
         public async Task<IActionResult> ConfirmEmail([FromBody] VerifyOtpDto request)
         {
-            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Otp))
+            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.OTP))
             {
                 return BadRequest("Email and OTP are required.");
             }
 
-            var isConfirmed = await _accountService.ConfirmEmailAsync(request.Email, request.Otp);
-            if (isConfirmed)
+            var isConfirmed = await _accountService.ConfirmEmailWithOTP(request);
+            if (isConfirmed.Succeeded)
             {
                 return Ok(new { Message = "Email confirmed successfully." });
             }
@@ -189,24 +187,5 @@ namespace API.Controllers
         }
 
 
-        //private async Task<ActionResult<AddressDto>> GetUserAddress()
-        //{
-        //    var user = await _userManager.FindUserByClaimsPrincipleWithAddress(User);
-        //    return _mapper.Map<Address, AddressDto>(user.Address);
-        //}
-
-
-        //[Authorize]
-        //[HttpPut("address")]
-        //public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
-        //{
-        //    var user = await _userManager.FindUserByClaimsPrincipleWithAddress(User);
-        //    user.Address = _mapper.Map<AddressDto, Address>(address);
-        //    var result = await _userManager.UpdateAsync(user);
-
-        //    if (result.Succeeded) return Ok(address);
-
-        //    return BadRequest("Problem updating the user");
-        //}
     }
 }

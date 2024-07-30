@@ -6,6 +6,8 @@ namespace Core.Entities.Identity
     {
         public string DisplayName { get; set; }
         public string? ProfilePictureUrl { get; set; }
+        public string? OTP { get; set; }
+        public DateTime? OTPExpiry { get; set; }
 
         public Address Address { get; set; }
     }
