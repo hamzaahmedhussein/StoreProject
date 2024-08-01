@@ -18,3 +18,12 @@ A RESTful API built using ASP.NET Core for managing an online store. This API al
 - **Authentication:** JWT (JSON Web Tokens)
 - **Logging:** Serilog
 
+## Getting Started
+
+### Prerequisites
+
+- .NET SDK (version 8.0)
+- MS SQL Server
+- Redis Server
+- Visual Studio or any other .NET-compatible IDE
+
