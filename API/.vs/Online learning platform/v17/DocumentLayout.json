@@ -1,0 +1,273 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Online learning platform\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\services\\userhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\services\\userhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46E2B41C-7E3C-4D12-AF82-3DB0DDDECDBD}|Online learning platform\\API.csproj|d:\\online learning platform\\online learning platform\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46E2B41C-7E3C-4D12-AF82-3DB0DDDECDBD}|Online learning platform\\API.csproj|solutionrelative:online learning platform\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\dtos\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\dtos\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\services\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\services\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\services\\iuserhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\services\\iuserhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\dtos\\verifyotpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\dtos\\verifyotpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\mailsettings\\imailingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\mailsettings\\imailingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D89B52BC-D5DD-4A6E-B880-7071606DBC8C}|Core\\Core.csproj|d:\\online learning platform\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D89B52BC-D5DD-4A6E-B880-7071606DBC8C}|Core\\Core.csproj|solutionrelative:core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|d:\\online learning platform\\application\\dtos\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E0C6B9-32BF-4892-A53F-CB6535BEA585}|Application\\Application.csproj|solutionrelative:application\\dtos\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResetPasswordDto.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\DTOs\\ResetPasswordDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\ResetPasswordDto.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\DTOs\\ResetPasswordDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\ResetPasswordDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T20:47:07.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserHelpers.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Services\\UserHelpers.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\UserHelpers.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Services\\UserHelpers.cs",
+              "RelativeToolTip": "Application\\Services\\UserHelpers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T15:27:55.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\TokenService.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Services\\TokenService.cs",
+              "RelativeToolTip": "Application\\Services\\TokenService.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T11:43:15.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Result.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\DTOs\\Result.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Result.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\DTOs\\Result.cs",
+              "RelativeToolTip": "Application\\DTOs\\Result.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T20:24:11.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Services\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\IAccountService.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Services\\IAccountService.cs",
+              "RelativeToolTip": "Application\\Services\\IAccountService.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAiwBQAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T09:56:40.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Online learning platform\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Online learning platform\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Online learning platform\\Online learning platform\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Online learning platform\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwHsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T21:39:25.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUserHelpers.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Services\\IUserHelpers.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\IUserHelpers.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Services\\IUserHelpers.cs",
+              "RelativeToolTip": "Application\\Services\\IUserHelpers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T15:29:25.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Services\\ITokenService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ITokenService.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Services\\ITokenService.cs",
+              "RelativeToolTip": "Application\\Services\\ITokenService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T09:56:31.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Services\\AccountService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\AccountService.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Services\\AccountService.cs",
+              "RelativeToolTip": "Application\\Services\\AccountService.cs",
+              "ViewState": "AQIAAKkAAAAAAAAAAAAAAOIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T15:28:51.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ChangePasswordDto.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\DTOs\\ChangePasswordDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\ChangePasswordDto.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\DTOs\\ChangePasswordDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\ChangePasswordDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T10:04:28.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VerifyOTPDto.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\DTOs\\VerifyOTPDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\VerifyOTPDto.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\DTOs\\VerifyOTPDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\VerifyOTPDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T16:37:20.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IMailingService.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\MailSettings\\IMailingService.cs",
+              "RelativeDocumentMoniker": "Application\\MailSettings\\IMailingService.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\MailSettings\\IMailingService.cs",
+              "RelativeToolTip": "Application\\MailSettings\\IMailingService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T17:24:34.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\Online learning platform\\Application\\Helpers\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Application\\Helpers\\MappingProfile.cs",
+              "ToolTip": "D:\\Online learning platform\\Application\\Helpers\\MappingProfile.cs",
+              "RelativeToolTip": "Application\\Helpers\\MappingProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T16:19:44.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Core.csproj",
+              "DocumentMoniker": "D:\\Online learning platform\\Core\\Core.csproj",
+              "RelativeDocumentMoniker": "Core\\Core.csproj",
+              "ToolTip": "D:\\Online learning platform\\Core\\Core.csproj",
+              "RelativeToolTip": "Core\\Core.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-11T16:39:42.305Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
