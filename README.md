@@ -1,7 +1,3 @@
-Here’s a revised version with proper spacing and clearer formatting:
-
----
-
 # StoreProject .NET API
 
 ### Key Features:
