@@ -1,13 +1,14 @@
 ﻿using Core.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace Core.Interfaces
 {
     public interface IBasketService
     {
-        Task<CustomerBasket> GetBasketAsync(string id);
-        Task<CustomerBasket> RemoveItemFromBasketAsync(string basketId, int productId);
-        Task<bool> DeleteBasketAsync(string id);
-        Task<CustomerBasket> AddItemToBasketAsync(string basketId, int productId);
-
+        Task<CustomerBasket> GetBasketAsync(HttpContext httpContext);
+        Task<CustomerBasket> RemoveItemFromBasketAsync(HttpContext httpContext, int productId);
+        Task<bool> DeleteBasketAsync(HttpContext httpContext);
+        Task<CustomerBasket> AddItemToBasketAsync(HttpContext httpContext, int productId);
+        Task<string> GetBasketIdFromCookieAsync(HttpContext httpContext);
     }
 }

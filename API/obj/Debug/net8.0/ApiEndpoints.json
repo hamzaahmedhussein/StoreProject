@@ -1,9 +1,25 @@
 [
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
-    "Method": "ChangePassword",
-    "RelativePath": "api/Account/change-password",
+    "ContainingType": "API.Controllers.AccountController",
+    "Method": "AddProfilePicture",
+    "RelativePath": "api/account/add-profile-picture",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AccountController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/account/change-password",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -16,9 +32,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "ConfirmEmail",
-    "RelativePath": "api/Account/confirmemail",
+    "RelativePath": "api/account/confirm-email",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -32,9 +48,29 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
+    "Method": "GetCurrentCustomer",
+    "RelativePath": "api/account/customer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AccountController",
+    "Method": "DeleteProfilePicture",
+    "RelativePath": "api/account/delete-profile-picture",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "ForgotPassword",
-    "RelativePath": "api/Account/forgot-password",
+    "RelativePath": "api/account/forgot-password",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -42,15 +78,15 @@
       {
         "Name": "email",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "Login",
-    "RelativePath": "api/Account/login",
+    "RelativePath": "api/account/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -64,19 +100,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
-    "Method": "GetProfileAsync",
-    "RelativePath": "api/Account/profile",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "RegisterCustomer",
-    "RelativePath": "api/Account/register-customer",
+    "RelativePath": "api/account/register/customer",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -90,9 +116,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "RegisterSeller",
-    "RelativePath": "api/Account/register-seller",
+    "RelativePath": "api/account/register/seller",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -106,9 +132,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "ResetPassword",
-    "RelativePath": "api/Account/reset-password",
+    "RelativePath": "api/account/reset-password",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -122,9 +148,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "YourNamespace.Controllers.AccountController",
+    "ContainingType": "API.Controllers.AccountController",
+    "Method": "GetCurrentSeller",
+    "RelativePath": "api/account/seller",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AccountController",
+    "Method": "UpdateProfilePicture",
+    "RelativePath": "api/account/update-profile-picture",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "VerifyOtp",
-    "RelativePath": "api/Account/verify-otp",
+    "RelativePath": "api/account/verify-otp",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -144,21 +196,35 @@
   },
   {
     "ContainingType": "API.Controllers.BasketController",
-    "Method": "GetBasketById",
-    "RelativePath": "api/Basket/{id}",
+    "Method": "GetBasket",
+    "RelativePath": "api/Basket",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.CustomerBasket",
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Entities.CustomerBasket, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.BasketController",
+    "Method": "DeleteBasket",
+    "RelativePath": "api/Basket",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -171,60 +237,80 @@
   {
     "ContainingType": "API.Controllers.BasketController",
     "Method": "AddItemToBasket",
-    "RelativePath": "api/Basket/add-item",
+    "RelativePath": "api/Basket/items",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "basketId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
       {
         "Name": "productId",
         "Type": "System.Int32",
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Entities.CustomerBasket, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "API.Controllers.BasketController",
     "Method": "RemoveItemFromBasket",
-    "RelativePath": "api/Basket/delete-item",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "basketId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "productId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.BasketController",
-    "Method": "DeleteBasket",
-    "RelativePath": "api/Basket/delete/{id}",
+    "RelativePath": "api/Basket/items/{productId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.String",
+        "Name": "productId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Entities.CustomerBasket, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.OrdersController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Orders",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDto",
+        "Type": "Application.DTOs.OrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Entities.OrderAggregate.Order, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "API.Controllers.OrdersController",
@@ -245,61 +331,9 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.OrdersController",
-    "Method": "AddDeliveryMethod",
-    "RelativePath": "api/Orders/add-delivery-method",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "Application.DTOs.DeliveryMethodDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.OrdersController",
-    "Method": "CreateOrder",
-    "RelativePath": "api/Orders/create-order",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "orderDto",
-        "Type": "Application.DTOs.OrderDto",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.OrderAggregate.Order",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "API.Controllers.OrdersController",
-    "Method": "GetDeliveryMethods",
-    "RelativePath": "api/Orders/deliveryMethods",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Core.Entities.OrderAggregate.DeliveryMethod, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Entities.OrderAggregate.Order, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -312,7 +346,7 @@
   {
     "ContainingType": "API.Controllers.OrdersController",
     "Method": "GetOrdersForUser",
-    "RelativePath": "api/Orders/user-orders",
+    "RelativePath": "api/Orders/buyer",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -320,6 +354,144 @@
       {
         "Name": "buyerEmail",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.IReadOnlyList\u00601[[Core.Entities.OrderAggregate.Order, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.OrdersController",
+    "Method": "AddDeliveryMethod",
+    "RelativePath": "api/Orders/delivery-methods",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.DeliveryMethodDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Entities.OrderAggregate.DeliveryMethod, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.OrdersController",
+    "Method": "GetDeliveryMethods",
+    "RelativePath": "api/Orders/delivery-methods",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.IReadOnlyList\u00601[[Core.Entities.OrderAggregate.DeliveryMethod, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProductsController",
+    "Method": "GetSortedProducts",
+    "RelativePath": "api/Products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sort",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Application.DTOs.Pagination\u00601[[Application.DTOs.ProductToReturnDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProductsController",
+    "Method": "AddProduct",
+    "RelativePath": "api/Products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Picture",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
     ],
@@ -339,6 +511,67 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Core.Models.Product, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProductsController",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/Products/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Picture",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -349,59 +582,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.ProductsController",
-    "Method": "AddProduct",
-    "RelativePath": "api/Products/add",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Application.DTOs.AddProductDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.ProductsController",
-    "Method": "GetSortedProducts",
-    "RelativePath": "api/Products/get-all",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "sort",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.ProductsController",
-    "Method": "UpdateProduct",
-    "RelativePath": "api/Products/update/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Application.DTOs.ProductUpdateDto",
-        "IsRequired": true
-      },
       {
         "Name": "id",
         "Type": "System.Int32",

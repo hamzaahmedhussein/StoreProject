@@ -3,6 +3,7 @@ using Application.Settings;
 using AutoMapper;
 using Connect.Application.DTOs;
 using Core.Entities;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography;
@@ -18,10 +19,12 @@ namespace Application.Services
         private readonly IMailingService _mailingService;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserHelpers _userHelpers;
         public AccountService(UserManager<AppUser> userManager,
             IMapper mapper, IHttpContextAccessor contextAccessor,
             IMailingService mailingService,
-            RoleManager<IdentityRole> roleManager, ITokenService tokenService)
+            RoleManager<IdentityRole> roleManager, ITokenService tokenService, IUnitOfWork unitOfWork, IUserHelpers userHelpers)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -29,6 +32,8 @@ namespace Application.Services
             _mailingService = mailingService;
             _roleManager = roleManager;
             _tokenService = tokenService;
+            _unitOfWork = unitOfWork;
+            _userHelpers = userHelpers;
         }
 
         #region Register
@@ -101,11 +106,6 @@ namespace Application.Services
 
 
 
-
-
-
-
-
         private async Task<IdentityResult> CreateUserAsync(RegisterUserDto userDto)
         {
             var existingUser = await _userManager.FindByEmailAsync(userDto.Email);
@@ -159,8 +159,6 @@ namespace Application.Services
             var claims = await _tokenService.CreateClaimsForUserAsync(user);
             return await _tokenService.GenerateJwtTokenAsync(claims);
 
-
-
         }
 
         private LoginResult CreateLoginResult(bool success, string token, LoginErrorType errorType)
@@ -175,25 +173,40 @@ namespace Application.Services
         }
         #endregion
 
-        #region GetUserAndAddRole 
-        public async Task<IdentityResult> AddUserToRoleAsync(string email, string role)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
-            {
-                return IdentityResult.Failed(new IdentityError { Description = $"User with email {email} not found." });
-            }
+        #region GetUsers
 
-            return await _userManager.AddToRoleAsync(user, role);
-        }
         public async Task<AppUser> GetCurrentUserAsync()
         {
             var currentUser = _contextAccessor.HttpContext?.User;
             if (currentUser == null)
                 return null;
-
             return await _userManager.GetUserAsync(currentUser);
         }
+        public async Task<UserProfileInfo> GetCurrentCustomerAsync()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+                throw new Exception("User not found");
+            var id = user.Id;
+            var customer = await _unitOfWork.Repository<Customer>().FindAsync(c => c.Id == id);
+            if (customer == null)
+                throw new Exception("Customer not found");
+            return _mapper.Map<UserProfileInfo>(customer);
+        }
+        public async Task<UserProfileInfo> GetCurrentSellerAsync()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+                throw new Exception("User not found");
+            var id = user.Id;
+            var seller = await _unitOfWork.Repository<Seller>().FindAsync(s => s.Id == id);
+            if (seller == null)
+                throw new Exception("Seller not found");
+            return _mapper.Map<UserProfileInfo>(seller);
+        }
+
+
+
         #endregion
 
         #region ChangePassword
@@ -210,6 +223,7 @@ namespace Application.Services
         }
         #endregion
 
+        #region ForgetPassword 
         public async Task<Result> ForgotPasswordAsync(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -231,7 +245,6 @@ namespace Application.Services
 
             return Result.Failure("Failed to send OTP.");
         }
-
         public async Task<string> VerifyOtpAndGenerateTokenAsync(string email, string otp)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(otp))
@@ -266,13 +279,100 @@ namespace Application.Services
             return Result.Failure("Failed to reset password.");
         }
 
+        #endregion
 
-        private async Task ClearOtpAsync(AppUser user)
+        #region ImageHandling
+        public async Task<string> AddProfilePictureAsync(IFormFile file)
         {
-            user.OTP = string.Empty;
-            user.OTPExpiry = DateTime.MinValue;
-            await _userManager.UpdateAsync(user);
+            var user = await GetCurrentUserAsync();
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            if (file == null || file.Length == 0)
+            {
+                throw new Exception("Invalid file. Please upload a valid image.");
+            }
+
+
+            var role = await _userManager.IsInRoleAsync(user, "Customer") ? "Customer" : "Seller";
+
+            user.ProfilePictureUrl = await _userHelpers.AddImage(file, role);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("Failed to update the user's profile picture.");
+            }
+
+            return user.ProfilePictureUrl;
+
         }
+
+
+        public async Task<string> UpdateProfilePictureAsync(IFormFile file)
+        {
+            var user = await GetCurrentUserAsync();
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            if (file == null || file.Length == 0)
+            {
+                throw new ArgumentException("Invalid file. Please upload a valid image.");
+            }
+
+            var role = await _userManager.IsInRoleAsync(user, "Customer") ? "Customer" : "Seller";
+
+            user.ProfilePictureUrl = await _userHelpers.UpdateImageAsync(file, user.ProfilePictureUrl, role);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("Failed to update the user's profile picture.");
+            }
+
+            return user.ProfilePictureUrl;
+        }
+
+
+        public async Task<bool> DeleteProfilePictureAsync()
+        {
+            var user = await GetCurrentUserAsync();
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            if (string.IsNullOrEmpty(user.ProfilePictureUrl))
+            {
+                throw new InvalidOperationException("No profile picture to delete.");
+            }
+
+            var role = await _userManager.IsInRoleAsync(user, "Customer") ? "Customer" : "Seller";
+
+            await _userHelpers.DeleteImageAsync(user.ProfilePictureUrl, role);
+
+            user.ProfilePictureUrl = null;
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("Failed to remove the user's profile picture.");
+            }
+
+            return true;
+        }
+
+
+        #endregion
 
 
         #region OTP Management
@@ -326,8 +426,18 @@ namespace Application.Services
             return sb.ToString();
         }
 
+        private async Task ClearOtpAsync(AppUser user)
+        {
+            user.OTP = string.Empty;
+            user.OTPExpiry = DateTime.MinValue;
+            await _userManager.UpdateAsync(user);
+        }
+
+
 
         #endregion
+
+
 
 
 

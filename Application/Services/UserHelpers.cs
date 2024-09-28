@@ -23,7 +23,7 @@ namespace Application.Services
         private readonly IAccountService _accountService;
 
         public UserHelpers(IConfiguration config, UserManager<AppUser> userManager, IHttpContextAccessor contextAccessor,
-            IWebHostEnvironment webHostEnvironment, ApplicationDbContext context, ILogger<IUserHelpers> logger, IAccountService accountService)
+            IWebHostEnvironment webHostEnvironment, ApplicationDbContext context, ILogger<IUserHelpers> logger)
         {
             _config = config;
             _userManager = userManager;
@@ -31,7 +31,6 @@ namespace Application.Services
             _webHostEnvironment = webHostEnvironment;
             _context = context;
             _logger = logger;
-            _accountService = accountService;
         }
         #endregion
 
@@ -48,7 +47,7 @@ namespace Application.Services
             }
 
             string rootPath = _webHostEnvironment.WebRootPath;
-            var user = await _accountService.GetCurrentUserAsync();
+            var user = await GetUserAsync();
             string userName = user.UserName;
             string profileFolderPath = Path.Combine(rootPath, "Images", userName, profileType);
 
@@ -77,7 +76,7 @@ namespace Application.Services
             }
 
             string rootPath = _webHostEnvironment.WebRootPath;
-            var user = await _accountService.GetCurrentUserAsync();
+            var user = await GetUserAsync();
             string userName = user.UserName;
 
             if (!imagePath.StartsWith($"/Images/{userName}/{profileType}/"))
@@ -104,7 +103,17 @@ namespace Application.Services
             string newImagePath = await AddImage(file, folderName);
             return newImagePath;
         }
+
         #endregion
+
+        public async Task<AppUser> GetUserAsync()
+        {
+            var currentUser = _contextAccessor.HttpContext?.User;
+            if (currentUser == null)
+                return null;
+            return await _userManager.GetUserAsync(currentUser);
+        }
+
 
     }
 }

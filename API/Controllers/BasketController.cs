@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Application.DTOs;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,57 +16,93 @@ namespace API.Controllers
             _basketService = basketService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
+        [HttpGet]
+        public async Task<ActionResult<ApiResponse<CustomerBasket>>> GetBasket()
         {
-            var basket = await _basketService.GetBasketAsync(id);
+            var basket = await _basketService.GetBasketAsync(HttpContext);
             if (basket == null)
-                return NotFound();
+            {
+                return NotFound(new ApiResponse<CustomerBasket>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = "Basket not found.",
+                    Errors = new List<string> { "No basket associated with this user." }
+                });
+            }
 
-            return Ok(basket);
+            return Ok(new ApiResponse<CustomerBasket>
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Basket retrieved successfully.",
+                Data = basket
+            });
         }
 
-        [HttpPost("delete-item")]
-        public async Task<IActionResult> RemoveItemFromBasket(string basketId, int productId)
+        [HttpDelete("items/{productId}")]
+        public async Task<ActionResult<ApiResponse<CustomerBasket>>> RemoveItemFromBasket(int productId)
         {
             try
             {
-                var basket = await _basketService.RemoveItemFromBasketAsync(basketId, productId);
-
-                return Ok(basket);
+                var basket = await _basketService.RemoveItemFromBasketAsync(HttpContext, productId);
+                return Ok(new ApiResponse<CustomerBasket>
+                {
+                    StatusCode = StatusCodes.Status200OK,
+                    Message = "Item removed from basket successfully.",
+                    Data = basket
+                });
             }
             catch (Exception ex)
             {
-
-                return BadRequest(ex.Message);
+                return BadRequest(new ApiResponse<CustomerBasket>
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Message = "Error removing item from basket.",
+                    Errors = new List<string> { ex.Message }
+                });
             }
         }
 
-
-        [HttpDelete("delete/{id}")]
-        public async Task<ActionResult> DeleteBasket(string id)
+        [HttpDelete]
+        public async Task<ActionResult<ApiResponse<string>>> DeleteBasket()
         {
-            var deleted = await _basketService.DeleteBasketAsync(id);
+            var deleted = await _basketService.DeleteBasketAsync(HttpContext);
             if (!deleted)
-                return BadRequest("Problem deleting basket");
+            {
+                return BadRequest(new ApiResponse<string>
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Message = "Problem deleting basket.",
+                    Errors = new List<string> { "Basket could not be deleted." }
+                });
+            }
 
             return NoContent();
         }
 
-        [HttpPost("add-item")]
-        public async Task<IActionResult> AddItemToBasket(string basketId, int productId)
-        {
 
+        [HttpPost("items")]
+        public async Task<ActionResult<ApiResponse<CustomerBasket>>> AddItemToBasket([FromQuery] int productId)
+
+        {
             try
             {
-                var basket = await _basketService.AddItemToBasketAsync(basketId, productId);
-                return Ok(basket);
+                var basket = await _basketService.AddItemToBasketAsync(HttpContext, productId);
+                return Ok(new ApiResponse<CustomerBasket>
+                {
+                    StatusCode = StatusCodes.Status200OK,
+                    Message = "Item added to basket successfully.",
+                    Data = basket
+                });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new ApiResponse<CustomerBasket>
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Message = "Error adding item to basket.",
+                    Errors = new List<string> { ex.Message }
+                });
             }
         }
-
     }
 }

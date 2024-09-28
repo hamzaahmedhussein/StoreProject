@@ -470,3 +470,4 @@ D:\OnlineStore\API\obj\Debug\net8.0\scopedcss\bundle\API.styles.css
 D:\OnlineStore\API\obj\Debug\net8.0\API.csproj.Up2Date
 D:\OnlineStore\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 D:\OnlineStore\API\obj\Debug\net8.0\ref\API.dll
+D:\OnlineStore\API\bin\Debug\net8.0\API.staticwebassets.runtime.json

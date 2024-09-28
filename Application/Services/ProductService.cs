@@ -17,13 +17,15 @@ namespace Application.Services
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private IUserHelpers _userHelpers;
 
-        public ProductService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
+        public ProductService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor, IUserHelpers userHelpers)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
+            _userHelpers = userHelpers;
         }
 
         #endregion
@@ -44,21 +46,30 @@ namespace Application.Services
         }
 
 
-        public async Task<IReadOnlyList<ProductToReturnDto>> GetProductsASync(string? sort)
+        public async Task<Pagination<ProductToReturnDto>> GetProductsASync(string? sort, int pageIndex, int pageSize)
         {
-            var spec = new SortedProductsSpecification(sort);
-            var models = await _unitOfWork.Repository<Product>().ListAsync(spec);
-            return _mapper.Map<IReadOnlyList<ProductToReturnDto>>(models);
+            var spec = new SortedProductsSpecification(sort, pageIndex, pageSize);
+
+            var products = await _unitOfWork.Repository<Product>().ListAsync(spec);
+
+            var totalCount = await _unitOfWork.Repository<Product>().CountAsync(new SortedProductsSpecification(sort, 0, int.MaxValue));
+
+            var data = _mapper.Map<IReadOnlyList<ProductToReturnDto>>(products);
+
+            return new Pagination<ProductToReturnDto>(pageIndex, pageSize, totalCount, data);
         }
+
 
         #endregion
 
 
         #region ADD
 
-        public async Task<bool> AddProductAsync(AddProductDto model)
+        public async Task<ProductToReturnDto> AddProductAsync(AddProductDto model, IFormFile Picture)
         {
             var product = _mapper.Map<Product>(model);
+            product.Picture = await _userHelpers.AddImage(Picture, "Products");
+
 
             var sellerId = _httpContextAccessor.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -75,30 +86,72 @@ namespace Application.Services
             await _unitOfWork.Repository<Product>().AddAsync(product);
             int result = await _unitOfWork.CompleteAsync();
 
-            return result > 0;
+            return _mapper.Map<ProductToReturnDto>(product);
         }
         #endregion
 
 
         #region UPDATE
-        public async Task UpdateProductAsync(ProductUpdateDto model, int productId)
+        public async Task<ProductToReturnDto> UpdateProductAsync(ProductUpdateDto model, int productId, IFormFile picture)
         {
             var product = await _unitOfWork.Repository<Product>().GetByIdAsync(productId);
 
             if (product == null)
+            {
                 throw new KeyNotFoundException("Product not found");
+            }
 
-            _mapper.Map(model, product);
+            if (picture != null && picture.Length > 0)
+            {
+                product.Picture = await _userHelpers.AddImage(picture, "Products");
+            }
+            else
+            {
+                product.Picture = product.Picture;
+            }
+
+            if (!string.IsNullOrEmpty(model.Name))
+            {
+                product.Name = model.Name;
+            }
+
+            if (!string.IsNullOrEmpty(model.Description))
+            {
+                product.Description = model.Description;
+            }
+
+            if (model.Price > 0)
+            {
+                product.Price = model.Price;
+            }
+
+            if (model.Quantity >= 0)
+            {
+                product.Quantity = model.Quantity;
+            }
+
+            if (!string.IsNullOrEmpty(model.Category))
+            {
+                product.Category = model.Category;
+            }
+
+            if (!string.IsNullOrEmpty(model.Brand))
+            {
+                product.Brand = model.Brand;
+            }
 
             await _unitOfWork.Repository<Product>().UpdateAsync(product);
             await _unitOfWork.CompleteAsync();
+
+            return _mapper.Map<ProductToReturnDto>(product);
         }
+
 
         #endregion
 
 
         #region DELETE
-        public async Task DeleteProductAsync(int id)
+        public async Task<ProductToReturnDto> DeleteProductAsync(int id)
         {
             var product = await _unitOfWork.Repository<Product>().GetByIdAsync(id);
 
@@ -109,6 +162,8 @@ namespace Application.Services
 
             await _unitOfWork.Repository<Product>().DeleteAsync(product);
             await _unitOfWork.CompleteAsync();
+            return _mapper.Map<ProductToReturnDto>(product);
+
         }
 
         #endregion

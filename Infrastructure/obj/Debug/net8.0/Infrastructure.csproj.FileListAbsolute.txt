@@ -50,3 +50,4 @@ D:\OnlineStore\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 D:\OnlineStore\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 D:\OnlineStore\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 D:\OnlineStore\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+D:\OnlineStore\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json

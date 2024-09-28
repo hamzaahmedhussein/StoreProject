@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\OnlineStore\\API\\wwwroot\\Images\\hamzaahmedhussein1@gmail.com\\Products\\1e3df4cf-6993-4bae-a546-53d0e7742782.png",
+      "PackagePath": "staticwebassets\\Images\\hamzaahmedhussein1@gmail.com\\Products\\1e3df4cf-6993-4bae-a546-53d0e7742782.png"
+    },
+    {
+      "Id": "D:\\OnlineStore\\API\\wwwroot\\Images\\hamzaahmedhussein1@gmail.com\\Products\\4023a9c1-aab6-46cb-826c-2cf81161ae14.png",
+      "PackagePath": "staticwebassets\\Images\\hamzaahmedhussein1@gmail.com\\Products\\4023a9c1-aab6-46cb-826c-2cf81161ae14.png"
+    },
+    {
+      "Id": "D:\\OnlineStore\\API\\wwwroot\\Images\\hamzaahmedhussein1@gmail.com\\Products\\5b822782-efaf-428c-95e4-5281d9f499a9.png",
+      "PackagePath": "staticwebassets\\Images\\hamzaahmedhussein1@gmail.com\\Products\\5b822782-efaf-428c-95e4-5281d9f499a9.png"
+    },
+    {
+      "Id": "D:\\OnlineStore\\API\\wwwroot\\Images\\hamzaahmedhussein1@gmail.com\\Seller\\7a3e0a8d-60de-437d-b32c-5bf3f9d1ba04.jpg",
+      "PackagePath": "staticwebassets\\Images\\hamzaahmedhussein1@gmail.com\\Seller\\7a3e0a8d-60de-437d-b32c-5bf3f9d1ba04.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.API.props",
+      "PackagePath": "build\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.API.props",
+      "PackagePath": "buildMultiTargeting\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.API.props",
+      "PackagePath": "buildTransitive\\API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

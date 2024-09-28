@@ -30,12 +30,15 @@ namespace Infrastructure.Services
             var items = new List<OrderItem>();
             foreach (var item in basket.Items)
             {
-                var productItem = await _unitOfWork.Repository<Product>().GetByIdAsync(item.Id);
-                if (productItem == null)
-                    throw new ArgumentNullException(nameof(productItem), "Product not found");
+                var product = await _unitOfWork.Repository<Product>().GetByIdAsync(item.Id);
+                if (product == null)
+                    throw new ArgumentNullException(nameof(product), "Product not found");
 
-                var itemOrdered = new ProductItemOrdered(productItem.Id, productItem.Name, productItem.Picture);
-                var orderItem = new OrderItem(itemOrdered, productItem.Price, item.Quantity);
+
+                var itemOrdered = new ProductItemOrdered(product.Id, product.Name, product.Picture);
+                var orderItem = new OrderItem(itemOrdered, product.Price, item.Quantity);
+                product.Quantity -= item.Quantity;
+                await _unitOfWork.Repository<Product>().UpdateAsync(product);
                 items.Add(orderItem);
             }
 

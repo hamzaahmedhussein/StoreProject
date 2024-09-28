@@ -21,6 +21,15 @@ namespace Application.Helpers
 
             CreateMap<AddressDto, Address>().ReverseMap();
 
+            CreateMap<Customer, UserProfileInfo>()
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(s => s.Address.Street))
+                .ForMember(dest => dest.City, opt => opt.MapFrom(s => s.Address.City))
+                .ForMember(dest => dest.State, opt => opt.MapFrom(s => s.Address.State));
+
+            CreateMap<Seller, UserProfileInfo>()
+               .ForMember(dest => dest.Street, opt => opt.MapFrom(s => s.Address.Street))
+               .ForMember(dest => dest.City, opt => opt.MapFrom(s => s.Address.City))
+               .ForMember(dest => dest.State, opt => opt.MapFrom(s => s.Address.State));
 
 
 

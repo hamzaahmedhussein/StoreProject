@@ -20,60 +20,110 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("create-order")]
-        public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
+        [HttpPost()]
+        public async Task<ActionResult<ApiResponse<Order>>> CreateOrder(OrderDto orderDto)
         {
             var address = _mapper.Map<Address>(orderDto.ShippingToAddress);
 
             var order = await _orderService.CreateOrderAsync(orderDto.BuyerEmail, orderDto.DeliveryMethodId, orderDto.BasketId, address);
 
-            if (order == null) return BadRequest("Problem creating order");
+            if (order == null)
+            {
+                return BadRequest(new ApiResponse<Order>
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Message = "Problem creating order.",
+                    Errors = new List<string> { "Failed to create order." }
+                });
+            }
 
-            return Ok(order);
+            return Ok(new ApiResponse<Order>
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Order created successfully.",
+                Data = order
+            });
         }
 
-
-        [HttpPost("add-delivery-method")]
-        public async Task<IActionResult> AddDeliveryMethod([FromBody] DeliveryMethodDto dto)
+        [HttpPost("delivery-methods")]
+        public async Task<ActionResult<ApiResponse<DeliveryMethod>>> AddDeliveryMethod([FromBody] DeliveryMethodDto dto)
         {
             var newMethod = await _orderService.AddDeliveryMethodAsync(dto.ShortName, dto.DeliveryTime, dto.Description, dto.Price);
 
             if (newMethod == null)
-                return BadRequest("Failed to add delivery method");
+            {
+                return BadRequest(new ApiResponse<DeliveryMethod>
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Message = "Failed to add delivery method.",
+                    Errors = new List<string> { "Delivery method could not be added." }
+                });
+            }
 
-            return Ok(newMethod);
+            return Ok(new ApiResponse<DeliveryMethod>
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Delivery method added successfully.",
+                Data = newMethod
+            });
         }
 
-
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetOrderById(int id, [FromQuery] string buyerEmail)
+        public async Task<ActionResult<ApiResponse<Order>>> GetOrderById(int id, [FromQuery] string buyerEmail)
         {
             var order = await _orderService.GetOrderByIdAsync(id, buyerEmail);
 
             if (order == null)
-                return NotFound($"Order with ID {id} and email {buyerEmail} not found");
+            {
+                return NotFound(new ApiResponse<Order>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Order with ID {id} and email {buyerEmail} not found.",
+                    Errors = new List<string> { "Order not found." }
+                });
+            }
 
-            return Ok(order);
+            return Ok(new ApiResponse<Order>
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Order retrieved successfully.",
+                Data = order
+            });
         }
 
-
-        [HttpGet("user-orders")]
-        public async Task<IActionResult> GetOrdersForUser([FromQuery] string buyerEmail)
+        [HttpGet("buyer")]
+        public async Task<ActionResult<ApiResponse<IReadOnlyList<Order>>>> GetOrdersForUser([FromQuery] string buyerEmail)
         {
             var orders = await _orderService.GetOrdersForUserAsync(buyerEmail);
 
             if (orders == null || orders.Count == 0)
-                return NotFound($"No orders found for user {buyerEmail}");
+            {
+                return NotFound(new ApiResponse<IReadOnlyList<Order>>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"No orders found for user {buyerEmail}.",
+                    Errors = new List<string> { "No orders found." }
+                });
+            }
 
-            return Ok(orders);
+            return Ok(new ApiResponse<IReadOnlyList<Order>>
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Orders retrieved successfully.",
+                Data = orders
+            });
         }
 
-
-        [HttpGet("deliveryMethods")]
-        public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
+        [HttpGet("delivery-methods")]
+        public async Task<ActionResult<ApiResponse<IReadOnlyList<DeliveryMethod>>>> GetDeliveryMethods()
         {
             var methods = await _orderService.GetDeliveryMethodsAsync();
-            return Ok(methods);
+            return Ok(new ApiResponse<IReadOnlyList<DeliveryMethod>>
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Delivery methods retrieved successfully.",
+                Data = methods
+            });
         }
     }
 }

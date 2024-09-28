@@ -16,7 +16,6 @@ namespace Core.Entities.OrderAggregate
             PaymentIntentId = paymentIntentId;
         }
         public int Id { get; set; }
-
         public string BuyerEmail { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public Address ShipToAddress { get; set; }
